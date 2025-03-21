@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./banner.module.css";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 export default function Banner() {
   const cover = [
@@ -14,6 +15,7 @@ export default function Banner() {
   ];
   const [index, setIndex] = useState(0);
   const router = useRouter();
+  const { data: session } = useSession();
 
   return (
     <div
@@ -38,6 +40,12 @@ export default function Banner() {
           place!
         </h3>
       </div>
+      {session ? (
+        <div className="z-30 absolute top-5 right-10 font-semibold text-cyan-100 text-xl">
+          Welcome {session.user?.name}
+        </div>
+      ) : null}
+
       <button
         className="
         bg-white text-cyan-600 border border-cyan-600
