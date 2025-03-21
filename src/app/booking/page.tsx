@@ -4,7 +4,7 @@ import { TextField, Button, Box } from "@mui/material";
 import DateReserve from "@/components/DateReserve";
 import getUserProfile from "@/libs/getUserProfile";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 export default async function Reservations() {
   const session = await getServerSession(authOptions);
